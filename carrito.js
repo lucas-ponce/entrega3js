@@ -92,7 +92,6 @@ function eliminarDelCarrito(e) {
     
     productosEnCarrito.splice(index, 1);
     cargarProductosCarrito();
-
     localStorage.setItem("ProductosEnCarrito", JSON.stringify(productosEnCarrito));
 
 }
