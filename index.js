@@ -21,7 +21,7 @@ const productos=[
         "data":"Yellow Gold",
         "precio": 31500.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado3.jpg",
+        "imagen": "assets/img/joyas/destacado3.jpg",
     },
     {
         "id": "ID4",
@@ -29,7 +29,7 @@ const productos=[
         "data":"Yellow Gold",
         "precio": 41000.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado4.jpg",
+        "imagen": "assets/img/joyas/destacado4.jpg",
     },
     {
         "id": "ID5",
@@ -37,7 +37,7 @@ const productos=[
         "data":"White Gold",
         "precio": 6000.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado5.jpg",
+        "imagen": "assets/img/joyas/destacado5.jpg",
     },
     {
         "id": "ID6",
@@ -45,7 +45,7 @@ const productos=[
         "data":"White Gold",
         "precio": 9000.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado6.jpg",
+        "imagen": "assets/img/joyas/destacado6.jpg",
     },
     {
         "id": "ID7",
@@ -53,7 +53,7 @@ const productos=[
         "data":"Yellow Gold",
         "precio": 7500.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado7.jpg",
+        "imagen": "assets/img/joyas/destacado7.jpg",
     },
     {
         "id": "ID8",
@@ -61,7 +61,7 @@ const productos=[
         "data":"Yellow Gold",
         "precio": 12500.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado8.jpg",
+        "imagen": "assets/img/joyas/destacado8.jpg",
     }
 ];
 const contenedorProductos = document.querySelector("#contenedor-productos");
