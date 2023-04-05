@@ -1,12 +1,70 @@
-class Producto {
-    constructor(id,nombre,precio,imagen){
-        this.id= id;
-        this.nombre= nombre.toUpperCase();
-        this.precio= parseFloat(precio);
-        this.cantidad= 1;
-        this.imagen=imagen;
+const productos=[
+    {
+        "id": "ID1",
+        "nombre": "Icon Pear Shape Diamond",
+        "data":"White Gold",
+        "precio": 7000.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado1.jpg",
+    },
+    {
+        "id": "ID2",
+        "nombre": "Icon Round Diamond Earrings",
+        "data":"White Gold",
+        "precio": 13500.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado2.jpg",
+    },
+    {
+        "id": "ID3",
+        "nombre": "Icon Cushion Cut Yellow Diamond Pendant",
+        "data":"Yellow Gold",
+        "precio": 31500.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado3.jpg",
+    },
+    {
+        "id": "ID4",
+        "nombre": "Icon Cushion Cut Yellow Diamond Ring",
+        "data":"Yellow Gold",
+        "precio": 41000.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado4.jpg",
+    },
+    {
+        "id": "ID5",
+        "nombre": "Inspired by Twombly Diamond Hoop Pendant",
+        "data":"White Gold",
+        "precio": 6000.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado5.jpg",
+    },
+    {
+        "id": "ID6",
+        "nombre": "Inspired by Twombly Round Diamond Pavé Band",
+        "data":"White Gold",
+        "precio": 9000.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado6.jpg",
+    },
+    {
+        "id": "ID7",
+        "nombre": "Inspired by Twombly Diamond Hoop Pendant",
+        "data":"Yellow Gold",
+        "precio": 7500.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado7.jpg",
+    },
+    {
+        "id": "ID8",
+        "nombre": "Inspired by Twombly Round Diamond Pavé Band",
+        "data":"Yellow Gold",
+        "precio": 12500.00,
+        "cantidad": 1,
+        "imagen": "/assets/img/joyas/destacado8.jpg",
     }
-}
+];
+const contenedorProductos = document.querySelector("#contenedor-productos");
 let productosEnCarrito;
 
 let productosEnCarritoLS = localStorage.getItem("ProductosEnCarrito");
@@ -18,7 +76,7 @@ if (productosEnCarritoLS) {
 }
 function agregarEnCarrito(e){
 const botonId = e.currentTarget.id;
-const productoAgregado=catalogo.find(Producto => Producto.id === botonId);
+const productoAgregado=productos.find(Producto => Producto.id === botonId);
     if(productosEnCarrito.some(Producto => Producto.id === botonId)){
         const index = productosEnCarrito.findIndex(Producto => Producto.id === botonId);
         productosEnCarrito[index].cantidad++; 
@@ -29,20 +87,45 @@ const productoAgregado=catalogo.find(Producto => Producto.id === botonId);
     localStorage.setItem("ProductosEnCarrito",JSON.stringify(productosEnCarrito));
 }
 
+// //evento click en agregar a carrito 
+// const buy1 = document.querySelector("#ID1");
+// buy1.addEventListener("click",agregarEnCarrito);
+// const buy2 = document.querySelector("#ID2");
+// buy2.addEventListener("click",agregarEnCarrito);
+// const buy3 = document.querySelector("#ID3");
+// buy3.addEventListener("click",agregarEnCarrito);
+// const buy4 = document.querySelector("#ID4");
+// buy4.addEventListener("click",agregarEnCarrito);
 
-// Cargar productos en catalogo 
-const p1 = new Producto("ID1","Icon Pear Shape Diamond",7000,"/assets/img/joyas/destacado1.jpg");
-const p2 = new Producto("ID2","Icon Round Diamond Earrings",13500,"/assets/img/joyas/destacado2.jpg");
-const p3 = new Producto("ID3","Icon Cushion Cut Yellow Diamond Pendant",31500,"/assets/img/joyas/destacado3.jpg");
-const p4 = new Producto("ID4","Icon Cushion Cut Yellow Diamond Ring",41000,"/assets/img/joyas/destacado4.jpg");
-const catalogo = [p1,p2,p3,p4];
+function actualizarBotonesAgregar() {
+    botonesAgregar = document.querySelectorAll(".producto-agregar");
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener("click", agregarEnCarrito);
+    });
+}
 
-//evento click en agregar a carrito 
-const buy1 = document.querySelector("#ID1");
-buy1.addEventListener("click",agregarEnCarrito);
-const buy2 = document.querySelector("#ID2");
-buy2.addEventListener("click",agregarEnCarrito);
-const buy3 = document.querySelector("#ID3");
-buy3.addEventListener("click",agregarEnCarrito);
-const buy4 = document.querySelector("#ID4");
-buy4.addEventListener("click",agregarEnCarrito);
+function cargarProductos(productos) {
+
+contenedorProductos.innerHTML = "";
+
+productos.forEach(producto => {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+        <a href=""><img "producto-imagen" src="${producto.imagen}" alt="${producto.nombre} height="300" width="300"></a>
+        <div class="producto-detalles" "data">
+            <h3 class="producto-titulo">${producto.nombre}</h3>
+            <p class="producto-data">${producto.data}</p>
+            <p class="producto-precio">from $${producto.precio}</p>
+            <button class="producto-agregar" id="${producto.id}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+            </svg></button>
+        </div>
+        </div>
+    `;
+    contenedorProductos.append(div);
+})
+
+actualizarBotonesAgregar();
+}
+cargarProductos(productos);

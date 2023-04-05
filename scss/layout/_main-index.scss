@@ -3,37 +3,55 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 }
-.destacados {
+.destacados{
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+.contenedor-productos {
 	margin-top: 50px;
 	margin-bottom: 150px;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	gap: 50px;
-	.grupo1 {
+	.producto{
 		display: flex;
-		gap: 50px;
+		gap: 28px;
 		width: 100%;
+		flex-direction: column;
 		justify-content: center;
-		a{& :hover {
+		align-items: center;
+		margin-top: 45px;
+		a:hover {
 			cursor: pointer;
-			scale: 1.04;}
+			scale: 1.15;
 		}
-		.data {
-			margin-top: 10px;
-			&:hover{
-				cursor:pointer;
-				color:goldenrod;
+		.producto-detalles{
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap:4px;
 			}
-			p{
-				margin: 2px;
+			.producto-titulo{
+				font-size: 20px;
+			}
+			
+			.producto-data{
+				font-size: 14px;
+			}
+			.producto-precio{
+				font-size: 16px;
+			}
+			.producto-agregar {
+				height: 45px;
+				width: 55px;
+				background-color:goldenrod;
+				border-color:goldenrod;
+				border-style: hidden;
+				border-radius: 25%;
 			}
 		}
-		.btn{
-			background-color:goldenrod;
-			border-color:goldenrod;
-			scale: 0.85;
-		}
-		
 	}
 }
