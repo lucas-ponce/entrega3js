@@ -5,7 +5,7 @@ const productos=[
         "data":"White Gold",
         "precio": 7000.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado1.jpg",
+        "imagen": "assets/img/joyas/destacado1.jpg",
     },
     {
         "id": "ID2",
@@ -13,7 +13,7 @@ const productos=[
         "data":"White Gold",
         "precio": 13500.00,
         "cantidad": 1,
-        "imagen": "/assets/img/joyas/destacado2.jpg",
+        "imagen": "assets/img/joyas/destacado2.jpg",
     },
     {
         "id": "ID3",
@@ -86,16 +86,6 @@ const productoAgregado=productos.find(Producto => Producto.id === botonId);
     }
     localStorage.setItem("ProductosEnCarrito",JSON.stringify(productosEnCarrito));
 }
-
-// //evento click en agregar a carrito 
-// const buy1 = document.querySelector("#ID1");
-// buy1.addEventListener("click",agregarEnCarrito);
-// const buy2 = document.querySelector("#ID2");
-// buy2.addEventListener("click",agregarEnCarrito);
-// const buy3 = document.querySelector("#ID3");
-// buy3.addEventListener("click",agregarEnCarrito);
-// const buy4 = document.querySelector("#ID4");
-// buy4.addEventListener("click",agregarEnCarrito);
 
 function actualizarBotonesAgregar() {
     botonesAgregar = document.querySelectorAll(".producto-agregar");
