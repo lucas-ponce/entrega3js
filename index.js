@@ -1,72 +1,12 @@
-const productos=[
-    {
-        "id": "ID1",
-        "nombre": "Icon Pear Shape Diamond",
-        "data":"White Gold",
-        "precio": 7000.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado1.jpg",
-    },
-    {
-        "id": "ID2",
-        "nombre": "Icon Round Diamond Earrings",
-        "data":"White Gold",
-        "precio": 13500.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado2.jpg",
-    },
-    {
-        "id": "ID3",
-        "nombre": "Icon Cushion Cut Yellow Diamond Pendant",
-        "data":"Yellow Gold",
-        "precio": 31500.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado3.jpg",
-    },
-    {
-        "id": "ID4",
-        "nombre": "Icon Cushion Cut Yellow Diamond Ring",
-        "data":"Yellow Gold",
-        "precio": 41000.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado4.jpg",
-    },
-    {
-        "id": "ID5",
-        "nombre": "Inspired by Twombly Diamond Hoop Pendant",
-        "data":"White Gold",
-        "precio": 6000.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado5.jpg",
-    },
-    {
-        "id": "ID6",
-        "nombre": "Inspired by Twombly Round Diamond Pavé Band",
-        "data":"White Gold",
-        "precio": 9000.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado6.jpg",
-    },
-    {
-        "id": "ID7",
-        "nombre": "Inspired by Twombly Diamond Hoop Pendant",
-        "data":"Yellow Gold",
-        "precio": 7500.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado7.jpg",
-    },
-    {
-        "id": "ID8",
-        "nombre": "Inspired by Twombly Round Diamond Pavé Band",
-        "data":"Yellow Gold",
-        "precio": 12500.00,
-        "cantidad": 1,
-        "imagen": "./assets/img/joyas/destacado8.jpg",
-    }
-];
+let productos=[];
+fetch("./productos.json")
+    .then(response => response.json())
+    .then(dato => {
+        productos = dato;
+        cargarProductos(productos);
+    })
 const contenedorProductos = document.querySelector("#contenedor-productos");
 let productosEnCarrito;
-
 let productosEnCarritoLS = localStorage.getItem("ProductosEnCarrito");
 
 if (productosEnCarritoLS) {
@@ -75,6 +15,25 @@ if (productosEnCarritoLS) {
     productosEnCarrito = [];
 }
 function agregarEnCarrito(e){
+Toastify({
+        text: "Producto agregado",
+        duration: 3000,
+        close: true,
+        gravity: "top", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+        background: "linear-gradient(to right, #897358, #897350)",
+        borderRadius: "2rem",
+        textTransform: "uppercase",
+        fontSize: ".75rem"
+        },
+        offset: {
+            x: '1.5rem', 
+            y: '1.5rem' 
+        },
+        onClick: function(){} 
+}).showToast();
 const botonId = e.currentTarget.id;
 const productoAgregado=productos.find(Producto => Producto.id === botonId);
     if(productosEnCarrito.some(Producto => Producto.id === botonId)){
@@ -118,4 +77,4 @@ productos.forEach(producto => {
 
 actualizarBotonesAgregar();
 }
-cargarProductos(productos);
+
